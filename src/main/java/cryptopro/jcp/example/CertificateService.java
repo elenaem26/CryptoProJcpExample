@@ -153,6 +153,10 @@ public class CertificateService {
         // с таким именем пока не существует)
         keyStore.load(null, null);
 
+        //удаляем если уже существует
+        if(keyStore.containsAlias(alias)) {
+            keyStore.deleteEntry(alias);
+        }
         // запись сертификата в хранилище доверенных сертификатов
         // (предполагается, что на носителе с именем CertStoreName не существует
         // ключа с тем же именем alias)
