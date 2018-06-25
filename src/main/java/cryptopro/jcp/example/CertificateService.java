@@ -303,22 +303,6 @@ public class CertificateService {
     "1.3.6.1.5.5.7.3.1"
     */
         request.addExtKeyUsage(GostCertificateRequest.INTS_PKIX_EMAIL_PROTECTION);
-        /*
-         * ExtendedKeyUsage можно указывать строкой "1.3.6.1.5.5.7.3.3", или можно
-         * массивом int[]{1, 3, 6, 1, 5, 5, 7, 3, 4} или объектом типа
-         * ru.CryptoPro.JCP.params.OID
-         */
-        request.addExtKeyUsage("1.3.6.1.5.5.7.3.3");
-        /*
-         * пример добавления в запрос собственного расширения Basic Constraints
-         */
-        Extension ext = new Extension();
-        int[] extOid = {2, 5, 29, 19};
-        ext.extnID = new Asn1ObjectIdentifier(extOid);
-        ext.critical = new Asn1Boolean(true);
-        byte[] extValue = {48, 6, 1, 1, -1, 2, 1, 5};
-        ext.extnValue = new Asn1OctetString(extValue);
-        request.addExtension(ext);
 
         // определение параметров и значения открытого ключа
         request.setPublicKeyInfo(pair.getPublic());

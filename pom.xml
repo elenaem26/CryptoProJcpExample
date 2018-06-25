@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>jcp</groupId>
-            <artifactId>A789SN1P</artifactId>
+            <artifactId>ASN1P</artifactId>
             <version>1.054</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/ASN1P.jar</systemPath>
