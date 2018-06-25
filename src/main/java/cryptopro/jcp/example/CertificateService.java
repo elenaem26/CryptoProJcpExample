@@ -161,6 +161,9 @@ public class CertificateService {
 
         // определение пути к файлу для сохранения в него содержимого хранилища
         File file = new File(storePath);
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+        }
         // сохранение содержимого хранилища в файл
         keyStore.store(new FileOutputStream(file), STORE_PASS);
     }
@@ -282,14 +285,14 @@ public class CertificateService {
             int keyUsage = GostCertificateRequest.DIGITAL_SIGNATURE |
                     GostCertificateRequest.NON_REPUDIATION;
             request.setKeyUsage(keyUsage);
-        } // if
+        }
         else {
             int keyUsage = GostCertificateRequest.DIGITAL_SIGNATURE |
                     GostCertificateRequest.NON_REPUDIATION |
                     GostCertificateRequest.KEY_ENCIPHERMENT |
                     GostCertificateRequest.KEY_AGREEMENT;
             request.setKeyUsage(keyUsage);
-        } // else
+        }
 
     /*
     Добавить ExtendedKeyUsage можно так. По умолчанию для ключа подписи,
